@@ -1,8 +1,8 @@
-package body;
+package model;
 
-import body.dao.ConnectionPool;
-import body.dao.entity.User;
-import body.dao.mapper.UserMapper;
+import model.dao.ConnectionPool;
+import model.entity.User;
+import model.dao.mapper.UserMapper;
 
 import java.io.*;
 import java.sql.Connection;

@@ -1,4 +1,4 @@
-package body.dao;
+package model.dao;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -23,9 +23,7 @@ public class ConnectionPool {
             ctx = new InitialContext();
             DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/base_pool");
             c = ds.getConnection();
-        } catch (NamingException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (NamingException | SQLException e) {
             e.printStackTrace();
         }
         return c;

@@ -1,7 +1,7 @@
-package body.dao.mapper;
+package model.dao.mapper;
 
 
-import body.dao.entity.Entity;
+import model.entity.Entity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

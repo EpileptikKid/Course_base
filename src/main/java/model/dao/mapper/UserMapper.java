@@ -1,6 +1,6 @@
-package body.dao.mapper;
+package model.dao.mapper;
 
-import body.dao.entity.User;
+import model.entity.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

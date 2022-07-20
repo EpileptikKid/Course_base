@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Context>
+    <Resource name="jdbc/base_pool"
+              auth="Container"
+              type="javax.sql.DataSource"
+              username="root"
+              password="root"
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/project_db"
+              validationQuery="SELECT 1"
+              maxActive="10"
+              maxIdle="3"/>
+</Context>

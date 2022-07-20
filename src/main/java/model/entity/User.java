@@ -1,4 +1,4 @@
-package model.dao.entity;
+package model.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -109,6 +109,6 @@ public class User implements Entity{
     }
 
     public enum Role implements Serializable {
-        STUDENT,TUTOR, ADMIN, GUEST;
+        STUDENT,TUTOR, ADMIN, GUEST
     }
 }
