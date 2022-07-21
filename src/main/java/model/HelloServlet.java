@@ -1,14 +1,9 @@
 package model;
 
-import model.dao.ConnectionPool;
 import model.entity.User;
-import model.dao.mapper.UserMapper;
-
+import model.service.UserService;
 import java.io.*;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
@@ -27,16 +22,10 @@ public class HelloServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         out.println("<h1>" + message + "</h1>");
-        Connection conn = ConnectionPool.getInstance().getConnection();
-        try (Statement statement = conn.createStatement()){
-            ResultSet res = statement.executeQuery("SELECT * FROM users");
-            out.println("______________USERS______________<br>");
-            while (res.next()) {
-                User user = new UserMapper().extract(res);
-                out.println(user + "<br>");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        UserService userService = new UserService();
+        List<User> users = userService.findAllUsers();
+        for (User user : users) {
+            out.println(user + "<br>");
         }
 
         out.println("</body></html>");
