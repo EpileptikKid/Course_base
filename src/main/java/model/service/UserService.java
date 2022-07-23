@@ -1,8 +1,8 @@
 package model.service;
 
+import model.dao.DaoFactory;
 import model.dao.UserDao;
 import model.dao.impl.JDBCDaoFactory;
-import model.dao.impl.JDBCUserDao;
 import model.entity.User;
 import model.exception.DBException;
 import model.exception.EntityAlreadyExistsException;
@@ -48,6 +48,15 @@ public class UserService {
         try (UserDao dao = new JDBCDaoFactory().createUserDao()) {
             return dao.findAll();
         } catch (DBException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public List<User> getUsersByRole(User.Role role) {
+        DaoFactory daoFactory = new JDBCDaoFactory();
+        try (UserDao userDao = daoFactory.createUserDao()) {
+            return userDao.findUserByRole(role);
+        } catch (DBException e ) {
             throw new ServiceException(e);
         }
     }

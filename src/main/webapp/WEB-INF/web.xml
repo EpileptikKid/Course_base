@@ -3,6 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <listener>
+        <listener-class>controller.listener.SessionListener</listener-class>
+    </listener>
     <filter>
         <filter-name>testFilter</filter-name>
         <filter-class>model.TestFilter</filter-class>
@@ -11,4 +14,5 @@
         <filter-name>testFilter</filter-name>
         <url-pattern>/signed</url-pattern>
     </filter-mapping>
+
 </web-app>

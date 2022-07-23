@@ -1,5 +1,6 @@
 package model.dao.impl;
 
+import model.dao.CourseDao;
 import model.dao.DaoFactory;
 import model.dao.UserDao;
 import model.exception.DBException;
@@ -13,6 +14,11 @@ public class JDBCDaoFactory implements DaoFactory {
     @Override
     public UserDao createUserDao() throws DBException {
         return new JDBCUserDao(getConnection());
+    }
+
+    @Override
+    public CourseDao createCourseDao() throws DBException {
+        return new JDBCCourseDao(getConnection());
     }
     private Connection getConnection() throws DBException {
         try {

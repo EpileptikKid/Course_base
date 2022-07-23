@@ -1,5 +1,7 @@
 package model;
 
+import com.mysql.cj.Session;
+import controller.constants.ControllerConstants;
 import model.entity.User;
 import model.service.UserService;
 import java.io.*;
@@ -27,6 +29,8 @@ public class HelloServlet extends HttpServlet {
         for (User user : users) {
             out.println(user + "<br>");
         }
+        String role = ((User) request.getSession().getAttribute(ControllerConstants.USER_ATTR)).getRole().toString();
+        out.println(role);
 
         out.println("</body></html>");
     }
