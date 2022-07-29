@@ -2,6 +2,9 @@ package controller.constants;
 
 public enum Parameter {
     FIRST_NAME("firstName"),
+    LAST_NAME("lastName"),
+    LOGIN("login"),
+    PASSWORD("password"),
     COURSE_SORT_OPTION("sortOption"),
     COURSE_SORT_DURATION_ASC("courseDurationAsc"),
     COURSE_SORT_DURATION_DESC("courseDurationDesc"),

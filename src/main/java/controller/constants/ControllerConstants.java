@@ -3,8 +3,10 @@ package controller.constants;
 public class ControllerConstants {
     private ControllerConstants() { throw new AssertionError(); }
     public static final String REDIRECT_PREFIX = "redirect:";
+    public static final String REDIRECT_TO_REGISTRATION_PAGE = REDIRECT_PREFIX + "/registration_page";
     public static final String USER_ATTR = "user";
     public static final String LOGGED_USERS_ATTR = "loggedUsers";
+    public static final String USER_REGISTER = "registerUser";
     public static final String ERROR_ATR = "error";
     public static final String FORWARD_TO_ERROR_PAGE = "/error.jsp";
     public static final int ITEMS_PER_PAGE = 3;

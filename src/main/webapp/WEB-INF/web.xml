@@ -7,12 +7,22 @@
         <listener-class>controller.listener.SessionListener</listener-class>
     </listener>
     <filter>
-        <filter-name>testFilter</filter-name>
-        <filter-class>model.TestFilter</filter-class>
+        <filter-name>AuthorizationFilter</filter-name>
+        <filter-class>controller.filter.AuthFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>testFilter</filter-name>
-        <url-pattern>/signed</url-pattern>
+        <filter-name>AuthorizationFilter</filter-name>
+        <url-pattern>/Course_base_war_exploded/*</url-pattern>
     </filter-mapping>
+    <servlet>
+        <servlet-name>registr</servlet-name>
+        <jsp-file>/WEB-INF/jsp/base/registration.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>registr</servlet-name>
+        <url-pattern>/registration</url-pattern>
+    </servlet-mapping>
+    
+
 
 </web-app>
