@@ -17,6 +17,8 @@
     <title>Main page</title>
 </head>
 <body>
+<%= request.getSession().getAttribute("message") == null? "": request.getSession().getAttribute("message")%>
+<% request.getSession().setAttribute("message", null); %>
 <%
     CourseService courseService = new CourseService();
     List<Course> courses = courseService.getAllCourse();

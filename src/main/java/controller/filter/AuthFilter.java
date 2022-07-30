@@ -1,6 +1,7 @@
 package controller.filter;
 
 import controller.constants.ControllerConstants;
+import controller.servlets.utils.RelationshipUserCourse;
 import model.entity.User;
 import model.exception.EntityNotFoundException;
 import model.service.UserService;
@@ -48,6 +49,7 @@ public class AuthFilter implements Filter {
         System.out.println(url);
         User user = (User) req.getSession().getAttribute(ControllerConstants.USER_ATTR);
         System.out.println(user.getRole());
+        System.out.println(req.getParameter("courseName"));
         Enumeration<String> names =  req.getParameterNames();
         System.out.println("__________________________");
         while (names.hasMoreElements()) {
@@ -67,6 +69,15 @@ public class AuthFilter implements Filter {
                 throw new RuntimeException(e);
             }
 
+        }
+        if (req.getParameter("courseName")!=null) {
+            String message = null;
+            try {
+                message = RelationshipUserCourse.RegisterUserInCourse(req.getParameter("courseName"), String.valueOf(user.getId()));
+            } catch (EntityNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            req.getSession().setAttribute("message", message);
         }
         System.out.println(user.getRole());
 

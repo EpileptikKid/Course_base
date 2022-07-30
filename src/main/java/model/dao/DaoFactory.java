@@ -6,4 +6,5 @@ public interface DaoFactory {
     UserDao createUserDao() throws DBException;
 
     CourseDao createCourseDao() throws DBException;
+    StudentCourseDao createStudentCourseDao() throws DBException;
 }

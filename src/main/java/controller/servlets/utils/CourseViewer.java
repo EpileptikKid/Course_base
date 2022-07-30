@@ -15,7 +15,7 @@ public class CourseViewer {
         resultString += "<tr><th>Description</th><th>" + course.getDescription() + "</th></tr>";
         resultString += "</tbody></table>";
         if (role.equals(User.Role.STUDENT)) {
-            resultString += "";
+            resultString += "<form method=\"post\"><input type=\"hidden\" name=\"courseName\" value=\"" + course.getId() + "\"><input type=\"submit\" value=\"Submit\"></form>";
         }
 
         return resultString;
