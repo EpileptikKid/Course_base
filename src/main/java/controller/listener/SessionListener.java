@@ -20,6 +20,7 @@ public class SessionListener implements HttpSessionListener {
     public void sessionDestroyed(HttpSessionEvent se) {
         User user = (User) se.getSession().getAttribute(ControllerConstants.USER_ATTR);
         String login = user.getLogin();
+        @SuppressWarnings("unchecked")
         Set<String> userLogins = (Set<String>) se.getSession().getAttribute(ControllerConstants.LOGGED_USERS_ATTR);
         userLogins.remove(login);
     }

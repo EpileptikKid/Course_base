@@ -14,8 +14,7 @@ public class SqlStatementLoader {
         if (instance==null) {
             synchronized (SqlStatementLoader.class) {
                 if (instance==null) {
-                    SqlStatementLoader temp = new SqlStatementLoader(PROPERTIES_PATH);
-                    instance = temp;
+                    instance = new SqlStatementLoader(PROPERTIES_PATH);
                 }
             }
         }

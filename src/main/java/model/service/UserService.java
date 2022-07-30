@@ -1,6 +1,5 @@
 package model.service;
 
-import model.dao.DaoFactory;
 import model.dao.UserDao;
 import model.dao.impl.JDBCDaoFactory;
 import model.entity.User;
@@ -19,14 +18,6 @@ public class UserService {
             dao.createUser(user);
         } catch (EntityAlreadyExistsException e) {
             throw new EntityAlreadyExistsException();
-        } catch (DBException e) {
-            throw new ServiceException(e);
-        }
-    }
-
-    public void updateUserBlockedStatus(User user) throws EntityNotFoundException {
-        try (UserDao dao = new JDBCDaoFactory().createUserDao()) {
-            dao.userUpdateIsBlockedStatus(user);
         } catch (DBException e) {
             throw new ServiceException(e);
         }
@@ -53,12 +44,4 @@ public class UserService {
         }
     }
 
-    public List<User> getUsersByRole(User.Role role) {
-        DaoFactory daoFactory = new JDBCDaoFactory();
-        try (UserDao userDao = daoFactory.createUserDao()) {
-            return userDao.findUserByRole(role);
-        } catch (DBException e ) {
-            throw new ServiceException(e);
-        }
-    }
 }

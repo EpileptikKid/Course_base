@@ -10,7 +10,6 @@ import model.service.exception.WrongPasswordException;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.*;
 
@@ -19,7 +18,7 @@ public class AuthFilter implements Filter {
     private static final Map<User.Role, List<String>> accessMap = new HashMap<>();
     private static final List<String> allUrls = new ArrayList<>();
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
         System.out.println("init filter");
 
         List<String> guestUrls = new ArrayList<>();
@@ -71,7 +70,7 @@ public class AuthFilter implements Filter {
 
         }
         if (req.getParameter("courseName")!=null) {
-            String message = null;
+            String message;
             try {
                 message = RelationshipUserCourse.RegisterUserInCourse(req.getParameter("courseName"), String.valueOf(user.getId()));
             } catch (EntityNotFoundException e) {
@@ -81,35 +80,14 @@ public class AuthFilter implements Filter {
         }
         System.out.println(user.getRole());
 
-
+        if (allUrls.contains(url)) {
             if (!accessMap.get(user.getRole()).contains(url)) {
                 res.sendError(HttpServletResponse.SC_FORBIDDEN);
                 System.out.println("success error " + url);
             }
+        }
 
         filterChain.doFilter(req, res);
-
-//        final String login = req.getParameter("login");
-//        final String password = req.getParameter("password");
-//        UserService userService = new UserService();
-//
-//
-//        final HttpSession session = req.getSession();
-//
-//        if (session!=null && session.getAttribute("login")!=null && session.getAttribute("password")!=null) {
-//            final User.Role role = (User.Role) session.getAttribute("role");
-//
-//        } else {
-//            try {
-//                User loginUser = userService.signInUser(login, password);
-//                req.getSession().setAttribute("user", loginUser);
-//            } catch (EntityNotFoundException | WrongPasswordException e) {
-//                req.getRequestDispatcher("/fail").forward(req, res);
-//                throw new RuntimeException(e);
-//            }
-//
-//
-//        }
     }
 
     @Override

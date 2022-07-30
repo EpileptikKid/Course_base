@@ -2,7 +2,6 @@ package model.dao.impl;
 
 import model.dao.StudentCourseDao;
 import model.exception.DBException;
-import model.exception.EntityNotFoundException;
 import model.util.SqlStatementLoader;
 
 import java.sql.Connection;
@@ -18,7 +17,7 @@ public class JDBCStudentCourseDao extends JDBCAbstractDao implements StudentCour
     }
 
     @Override
-    public void enrollStudent(int studId, int courseId) throws DBException, EntityNotFoundException {
+    public void enrollStudent(int studId, int courseId) throws DBException {
         try (PreparedStatement enrollStudentStatement = connection.prepareStatement(ENROLL_USER)) {
             connection.setAutoCommit(false);
             enrollStudentStatement.setInt(1, studId);

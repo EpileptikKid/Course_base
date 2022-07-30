@@ -26,23 +26,4 @@ public class UserMapper implements EntityMapper<User> {
                 .build();
     }
 
-    public User extractAuthorizationData(ResultSet resultSet) throws SQLException {
-        String password = resultSet.getString("password");
-        User.Role role = User.Role.valueOf(resultSet.getString("role"));
-        return new User.Builder()
-                .setPassword(password)
-                .setRole(role)
-                .build();
-    }
-
-    public User extractStudentData(ResultSet resultSet) throws SQLException {
-        String firstName = resultSet.getString("first_name");
-        String lastName = resultSet.getString("last_name");
-        int studId = resultSet.getInt("stud_id");
-        return new User.Builder()
-                .setId(studId)
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .build();
-    }
 }

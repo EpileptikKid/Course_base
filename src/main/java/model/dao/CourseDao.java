@@ -2,8 +2,6 @@ package model.dao;
 
 import model.entity.Course;
 import model.exception.DBException;
-import model.exception.EntityNotFoundException;
-import model.exception.IllegalDeleteException;
 
 import java.util.List;
 

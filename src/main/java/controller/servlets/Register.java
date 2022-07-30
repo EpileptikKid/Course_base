@@ -4,8 +4,6 @@ import controller.constants.ControllerConstants;
 import model.entity.User;
 import model.exception.EntityAlreadyExistsException;
 import model.service.UserService;
-
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +15,7 @@ import java.util.List;
 @WebServlet(name = "RegisterUtil", value = "/register-util")
 public class Register extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         User currentUser = (User) req.getSession().getAttribute(ControllerConstants.USER_ATTR);
         String errorMessage = "";
         String firstName = req.getParameter("firstname");

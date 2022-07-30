@@ -2,10 +2,8 @@ package model.service;
 
 import model.dao.StudentCourseDao;
 import model.dao.impl.JDBCDaoFactory;
-import model.dao.impl.JDBCStudentCourseDao;
 import model.exception.DBException;
 import model.exception.EntityNotFoundException;
-import model.exception.IllegalDeleteException;
 import model.service.exception.ServiceException;
 
 public class StudentCourseService {
