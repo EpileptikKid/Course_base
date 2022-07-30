@@ -35,7 +35,8 @@ public class UserService {
     public User signInUser(String login, String password) throws EntityNotFoundException, WrongPasswordException {
         try (UserDao dao = new JDBCDaoFactory().createUserDao()) {
             User user = dao.findUserByLogin(login);
-            if (password != user.getPassword()) {
+            if (!password.equals(user.getPassword())) {
+
                 throw new WrongPasswordException();
             }
             return user;

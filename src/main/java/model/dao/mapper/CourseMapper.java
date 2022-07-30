@@ -16,12 +16,11 @@ public class CourseMapper implements EntityMapper<Course> {
         LocalDate startDate = LocalDate.parse(resultSet.getString("start_date"));
         LocalDate endDate = LocalDate.parse(resultSet.getString("end_date"));
         String description = resultSet.getString("description");
-        int studentCount = resultSet.getInt("student_count");
         Theme theme = new Theme.Builder()
                 .setName(resultSet.getString("theme_name"))
                 .setId(resultSet.getInt("theme_id"))
                 .build();
-        Optional<String> tutorLogin = Optional.ofNullable(resultSet.getString("login"));
+        Optional<String> tutorLogin = Optional.ofNullable(resultSet.getString("user_id"));
 
         User tutor = null;
         if (tutorLogin.isPresent()) {
@@ -40,7 +39,7 @@ public class CourseMapper implements EntityMapper<Course> {
                 .setDescription(description)
                 .setTutor(tutor)
                 .setTheme(theme)
-                .setStudentCount(studentCount)
+                .setStudentCount(10)
                 .build();
     }
 }

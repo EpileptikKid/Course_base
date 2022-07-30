@@ -11,9 +11,11 @@
     <title>Login</title>
 </head>
 <body>
+<%= request.getSession().getAttribute("message") == null? "": request.getSession().getAttribute("message")%>
+<% request.getSession().setAttribute("message", null); %>
     <div class="form">
         <h1>Login in system</h1>
-        <form method="post" action="">
+        <form method="post" action="main_page">
             <input type="text" required placeholder="login" name="login"><br>
             <input type="password" required placeholder="password" name="password"><br><br>
             <input class="button" type="submit" value="Sign in">

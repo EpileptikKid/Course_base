@@ -32,6 +32,9 @@ public class Register extends HttpServlet {
         if (login.length() <= 3) {
             errorMessage += "<p style=\"color:#ff0000\">Login is too short!</p>";
         }
+        if (login.length() >= 15) {
+            errorMessage += "<p style=\"color:#ff0000\">Login is too long!</p>";
+        }
         String password = req.getParameter("password");
         if (password.length() <= 3) {
             errorMessage += "<p style=\"color:#ff0000\">Password is too short!</p>";
@@ -45,6 +48,7 @@ public class Register extends HttpServlet {
                 .setRole(User.Role.STUDENT)
                 .setBlocked(false)
                 .build();
+
 
         UserService userService = new UserService();
         List<User> users = userService.findAllUsers();
@@ -61,8 +65,8 @@ public class Register extends HttpServlet {
             if (!check && errorMessage.length() < 3) {
                 try {
                     userService.registerUser(registerUser);
-
-                    getServletContext().getRequestDispatcher("/super-result").forward(req, resp);
+                    req.getSession().setAttribute("message", "<p style=\"color:#00ff00\">User successfully registered!</p>");
+                    resp.sendRedirect("/Course_base_war_exploded/logout");
                 } catch (EntityAlreadyExistsException e) {
                     throw new RuntimeException(e);
                 }

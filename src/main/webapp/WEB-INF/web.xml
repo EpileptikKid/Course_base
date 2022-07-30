@@ -3,6 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
     <listener>
         <listener-class>controller.listener.SessionListener</listener-class>
     </listener>
@@ -12,7 +15,7 @@
     </filter>
     <filter-mapping>
         <filter-name>AuthorizationFilter</filter-name>
-        <url-pattern>/Course_base_war_exploded/*</url-pattern>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>registr</servlet-name>
@@ -22,6 +25,31 @@
         <servlet-name>registr</servlet-name>
         <url-pattern>/registration</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>signin</servlet-name>
+        <jsp-file>/WEB-INF/jsp/base/signIn.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>signin</servlet-name>
+        <url-pattern>/signin</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>mainpage</servlet-name>
+        <jsp-file>/WEB-INF/jsp/base/main_page.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mainpage</servlet-name>
+        <url-pattern>/main_page</url-pattern>
+    </servlet-mapping>
+
     
 
 

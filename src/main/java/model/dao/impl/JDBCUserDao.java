@@ -87,6 +87,7 @@ public class JDBCUserDao extends JDBCAbstractDao implements UserDao {
             if (!resultSet.next()) {
                 throw new EntityNotFoundException();
             }
+
             return new UserMapper().extract(resultSet);
         } catch (SQLException e) {
             throw new DBException(e);

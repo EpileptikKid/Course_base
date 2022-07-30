@@ -11,7 +11,6 @@ import java.util.Set;
 public class SessionListener implements HttpSessionListener {
     @Override
     public void sessionCreated(HttpSessionEvent se) {
-        System.out.println("listener started");
         User user = new User.Builder()
                 .setRole(User.Role.GUEST)
                 .build();
@@ -19,7 +18,6 @@ public class SessionListener implements HttpSessionListener {
     }
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
-        System.out.println("listener destroy...");
         User user = (User) se.getSession().getAttribute(ControllerConstants.USER_ATTR);
         String login = user.getLogin();
         Set<String> userLogins = (Set<String>) se.getSession().getAttribute(ControllerConstants.LOGGED_USERS_ATTR);
