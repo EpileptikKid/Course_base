@@ -31,11 +31,20 @@ public class AuthFilter implements Filter {
 
         List<String> studentUrls = new ArrayList<>();
         studentUrls.add("/Course_base_war_exploded/main_page");
-
         accessMap.put(User.Role.STUDENT, studentUrls);
+
+        List<String> adminUrls = new ArrayList<>();
+        adminUrls.add("/Course_base_war_exploded/main_page");
+        accessMap.put(User.Role.ADMIN, adminUrls);
+
+        List<String> tutorUrls = new ArrayList<>();
+        tutorUrls.add("/Course_base_war_exploded/main_page");
+        accessMap.put(User.Role.TUTOR, tutorUrls);
 
         allUrls.addAll(guestUrls);
         allUrls.addAll(studentUrls);
+        allUrls.addAll(adminUrls);
+        allUrls.addAll(tutorUrls);
     }
 
     @Override

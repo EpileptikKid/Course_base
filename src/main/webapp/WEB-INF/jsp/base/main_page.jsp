@@ -4,7 +4,9 @@
 <%@ page import="java.io.Writer" %>
 <%@ page import="model.entity.User" %>
 <%@ page import="controller.servlets.utils.CourseViewer" %>
-<%@ page import="controller.constants.ControllerConstants" %><%--
+<%@ page import="controller.constants.ControllerConstants" %>
+<%@ page import="controller.command.Command" %>
+<%@ page import="controller.command.impl.goToMainPageCommand" %><%--
   Created by IntelliJ IDEA.
   User: k1dep
   Date: 29.07.2022
@@ -20,12 +22,9 @@
 <%= request.getSession().getAttribute("message") == null? "": request.getSession().getAttribute("message")%>
 <% request.getSession().setAttribute("message", null); %>
 <%
-    CourseService courseService = new CourseService();
-    List<Course> courses = courseService.getAllCourse();
+    Command command = new goToMainPageCommand();
     Writer writer = response.getWriter();
-    for (Course course : courses) {
-        writer.write(CourseViewer.printCourse(course, ((User) request.getSession().getAttribute(ControllerConstants.USER_ATTR)).getRole()));
-    }
+    writer.write(command.execute(request, response));
 %>
 </body>
 </html>

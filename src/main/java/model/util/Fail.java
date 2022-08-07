@@ -1,4 +1,4 @@
-package model;
+package model.util;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

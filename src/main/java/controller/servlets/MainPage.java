@@ -1,5 +1,7 @@
 package controller.servlets;
 
+import controller.command.Command;
+import controller.command.impl.goToMainPageCommand;
 import controller.constants.ControllerConstants;
 import controller.servlets.utils.CourseViewer;
 import model.entity.Course;
@@ -23,12 +25,8 @@ public class MainPage extends HttpServlet {
         Writer writer = resp.getWriter();
         writer.write("<head><title>Main page</title></head>");
         writer.write("<body>");
-        for (int i = 1; i < 11; i++) {
-            for (Course course : courses) {
-                writer.write(CourseViewer.printCourse(course, ((User) req.getSession().getAttribute(ControllerConstants.USER_ATTR)).getRole()));
-                writer.write("<br>");
-            }
-        }
+        Command command = new goToMainPageCommand();
+        writer.write(command.execute(req, resp));
         writer.write("</body>");
     }
 }
